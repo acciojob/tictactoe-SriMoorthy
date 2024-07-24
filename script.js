@@ -59,31 +59,5 @@ function checkWin(board, player) {
 
 }
 
-describe('Tic Tac Toe Test', () => {
-    it('should play a full game', () => {
-        // Ensure the page is fully loaded
-        cy.visit(baseUrl + "/main.html").then(() => {
-            // Increase the timeout for the subsequent commands
-            cy.get('#player1', { timeout: 10000 }).should('be.visible');
-            cy.get('#player1').type('Player1');
-            cy.get('#player2', { timeout: 10000 }).should('be.visible');
-            cy.get('#player2').type('Player2');
-            cy.get('#submit', { timeout: 10000 }).click();
-
-            // Wait for the game board to be displayed and check the first message
-            cy.get('.message', { timeout: 10000 }).should('contain', "Player1, you're up");
-
-            // Simulate player moves
-            cy.get('#1', { timeout: 10000 }).click();
-            cy.get('#4', { timeout: 10000 }).click();
-            cy.get('#2', { timeout: 10000 }).click();
-            cy.get('#5', { timeout: 10000 }).click();
-            cy.get('#3', { timeout: 10000 }).click();
-
-            // Check the winning message
-            cy.get('.message', { timeout: 10000 }).should('contain', "Player1 congratulations you won!");
-        });
-    });
-});
 
 
